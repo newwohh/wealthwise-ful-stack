@@ -17,20 +17,17 @@ const Login = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
-        <Box>
-          <Typography variant="h4">Login</Typography>
-          <Typography>Welcome back</Typography>
+        <Box sx={{ marginBottom: "50px" }}>
+          <Typography variant="h3">Login</Typography>
+          <Typography>Hi, Welcome back !</Typography>
         </Box>
         <form
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
             marginBottom: "40px",
           }}
         >
@@ -51,15 +48,27 @@ const Login = () => {
             Create account
           </Button>
         </form>
-        <Link
-          style={{
-            color: "black",
-            textDecoration: "none",
-          }}
-          href={"/forgotpassword"}
-        >
-          Forgot password?
-        </Link>
+        <Box>
+          <Link
+            style={{
+              color: "black",
+              textDecoration: "none",
+              marginRight: "50px",
+            }}
+            href={"/forgotpassword"}
+          >
+            Forgot password?
+          </Link>
+          <Link
+            style={{
+              color: "black",
+              textDecoration: "none",
+            }}
+            href={"/signup"}
+          >
+            Not a member? Click to signup
+          </Link>
+        </Box>
       </Box>
     </div>
   );
