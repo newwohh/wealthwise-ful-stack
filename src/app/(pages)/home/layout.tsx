@@ -1,17 +1,17 @@
 "use client";
 
-import { Drawer } from "@mui/material";
+import Drawer from "@/components/Drawer";
 import React from "react";
 
-export default function HomeLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <main>
+    <section style={{ display: "flex" }}>
       <Drawer />
       {children}
-    </main>
+    </section>
   );
 }
