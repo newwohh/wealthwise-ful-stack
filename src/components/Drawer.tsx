@@ -17,8 +17,8 @@ function Drawer(): JSX.Element {
   return (
     <div
       style={{
-        height: "69vh",
-        width: "100px",
+        height: "80vh",
+        width: "80px",
         padding: "150px",
         backgroundColor: " black",
       }}
@@ -30,12 +30,12 @@ function Drawer(): JSX.Element {
             alt="any"
             height={50}
             width={50}
-            style={{ borderRadius: "15px" }}
+            style={{ borderRadius: "15px", marginBottom: "30px" }}
           />
           <Typography variant="h4" color="white">
             Username
           </Typography>
-          <Typography variant="caption" color="grey">
+          <Typography variant="h6" color="grey">
             email
           </Typography>
         </Box>

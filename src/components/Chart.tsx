@@ -1,16 +1,14 @@
 "use client";
 
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { BarChart, Bar } from "recharts";
 
-function BarChart(props: any) {
+function Chart(props: any) {
   return (
-    <Bar
-      style={{ width: "500px", height: "10px" }}
-      options={props.options}
-      data={props.chartdata}
-    />
+    <BarChart width={450} height={60} data={props.data}>
+      <Bar dataKey="uv" fill="lightblue" />
+    </BarChart>
   );
 }
 
-export default BarChart;
+export default Chart;
