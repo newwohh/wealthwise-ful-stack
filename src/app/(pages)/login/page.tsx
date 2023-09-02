@@ -5,8 +5,11 @@ import { titleHandler } from "@/actions/actions";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { loginstyles } from "@/styles/Login";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter();
+
   React.useEffect(() => {
     titleHandler("Login");
   }, []);
@@ -44,7 +47,11 @@ const Login = () => {
             sx={{ width: "400px", marginBottom: "" }}
             variant="standard"
           />
-          <Button variant="text" sx={loginstyles.loginbtn}>
+          <Button
+            onClick={() => router.push("/home")}
+            variant="text"
+            sx={loginstyles.loginbtn}
+          >
             Create account
           </Button>
         </form>

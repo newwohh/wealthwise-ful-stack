@@ -45,13 +45,13 @@ const Profile = () => {
           </FormControl>
           <FormControl
             variant="standard"
-            sx={{ marginRight: "100px", marginBottom: "100px" }}
+            sx={{ marginRight: "100px", marginBottom: "50px" }}
           >
             <InputLabel htmlFor="component-simple">Username</InputLabel>
             <Input id="component-simple" defaultValue="Composed TextField" />
           </FormControl>
           <Box
-            sx={{ marginRight: "100px", marginBottom: "100px", minWidth: 120 }}
+            sx={{ marginRight: "100px", marginBottom: "50px", minWidth: 120 }}
           >
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">India</InputLabel>
@@ -66,9 +66,34 @@ const Profile = () => {
                 <MenuItem value={20}>China</MenuItem>
                 <MenuItem value={30}>Russia</MenuItem>
               </Select>
+              <Typography variant="h6" sx={{ marginTop: "50px" }}>
+                Password Guidelines
+              </Typography>
+              <Typography sx={{ fontStyle: "oblique" }}>
+                *Choose a strong password that includes a combination of
+                uppercase and lowercase letters, numbers, and special
+                characters. Avoid using easily guessable information like your
+                name or common words.
+              </Typography>
             </FormControl>
-
-            <Typography variant="h5">Profile Image</Typography>
+            <Box
+              sx={{
+                display: "flex",
+                marginTop: "50px",
+              }}
+            >
+              <FormControl
+                variant="standard"
+                sx={{ marginRight: "20px", marginBottom: "100px" }}
+              >
+                <InputLabel htmlFor="component-simple">Old password</InputLabel>
+                <Input id="component-simple" />
+              </FormControl>
+              <FormControl variant="standard" sx={{ marginBottom: "100px" }}>
+                <InputLabel htmlFor="component-simple">New password</InputLabel>
+                <Input id="component-simple" />
+              </FormControl>
+            </Box>
           </Box>
         </Box>
       </Box>
