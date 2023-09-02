@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 function Drawer(): JSX.Element {
   const links: { title: string; link: string }[] = [
     { title: "Home", link: "/home" },
-    { title: "Dashboard", link: "/home/dashboard" },
     { title: "Account Balance", link: "/home/accountbalance" },
+    { title: "Profile", link: "/home/profile" },
     { title: "Logout", link: "/logout" },
   ];
   const path = usePathname();
@@ -18,8 +18,8 @@ function Drawer(): JSX.Element {
     <div
       style={{
         height: "80vh",
-        width: "80px",
-        padding: "150px",
+        width: "50px",
+        padding: "130px",
         backgroundColor: " black",
       }}
     >
