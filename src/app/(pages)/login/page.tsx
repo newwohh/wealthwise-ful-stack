@@ -6,13 +6,30 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { loginstyles } from "@/styles/Login";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const Login = () => {
   const router = useRouter();
+  const [loginCredentials, setLoginCredentials] = React.useState({
+    email: "",
+    password: "",
+  });
 
   React.useEffect(() => {
     titleHandler("Login");
   }, []);
+
+  const loginHandler = async () => {
+    try {
+      const res = await axios.post("/api/users/login", loginCredentials);
+      console.log(res.data.message);
+      if (res.data.message === "success") {
+        router.push("/home");
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
 
   return (
     <div style={loginstyles.logincontainer}>
@@ -39,6 +56,13 @@ const Login = () => {
             placeholder="Email"
             sx={{ width: "400px", marginBottom: "30px" }}
             variant="standard"
+            value={loginCredentials.email}
+            onChange={(e) =>
+              setLoginCredentials({
+                ...loginCredentials,
+                email: e.target.value,
+              })
+            }
           />
           <TextField
             label="Password"
@@ -46,9 +70,16 @@ const Login = () => {
             type="password"
             sx={{ width: "400px", marginBottom: "" }}
             variant="standard"
+            value={loginCredentials.password}
+            onChange={(e) =>
+              setLoginCredentials({
+                ...loginCredentials,
+                password: e.target.value,
+              })
+            }
           />
           <Button
-            onClick={() => router.push("/home")}
+            onClick={() => loginHandler()}
             variant="text"
             sx={loginstyles.loginbtn}
           >

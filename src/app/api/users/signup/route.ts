@@ -15,7 +15,8 @@ export async function POST(request: NextRequest) {
       email,
       password,
     });
-
     await user.save();
+
+    return NextResponse.json({ message: "success", user: user });
   } catch (error) {}
 }
