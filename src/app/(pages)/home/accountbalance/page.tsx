@@ -168,11 +168,11 @@ function AccountBalance() {
                   width: "300px",
                   height: "350px",
                   borderRadius: "30px",
-                  backgroundColor: "#13274F",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
+                  backgroundColor: "#8884d8",
                 }}
               >
                 <CardContent sx={{ color: "white", textAlign: "center" }}>
