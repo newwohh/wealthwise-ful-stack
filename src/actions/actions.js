@@ -1,5 +1,3 @@
 export const titleHandler = (newTitle) => {
-  if (typeof window !== "undefined") {
-    document.title = `Wealthwise | ${newTitle}`;
-  }
+  return (document.title = `Wealthwise | ${newTitle}`);
 };

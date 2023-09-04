@@ -20,7 +20,7 @@ function DashBoardCard({ bg }: any) {
         <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box>
             <Typography variant="h6" component="div">
-              Dashboard
+              Monthly investments
             </Typography>
             <Typography
               variant="h5"
