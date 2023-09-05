@@ -22,9 +22,10 @@ const Login = () => {
   const loginHandler = async () => {
     try {
       const res = await axios.post("/api/users/login", loginCredentials);
-      console.log(res.data.message);
+      console.log(res.data);
       if (res.data.message === "success") {
         router.push("/home");
+        localStorage.setItem("user", JSON.stringify(res.data.user._id));
       }
     } catch (error: any) {
       console.log(error);

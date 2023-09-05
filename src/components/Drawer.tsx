@@ -1,9 +1,9 @@
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Button, Link, Modal, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import signup from "../assets/signup.jpg";
 import { usePathname } from "next/navigation";
-import FinanceModal from "./FInanceModal";
+import FinanceModal, { style } from "./FInanceModal";
 
 function Drawer(): JSX.Element {
   const links: { title: string; link: string }[] = [
@@ -16,6 +16,7 @@ function Drawer(): JSX.Element {
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   console.log(path);
   return (
@@ -96,7 +97,19 @@ function Drawer(): JSX.Element {
           </Link>
         </Box>
       </Box>
-      <FinanceModal open={open} />
+
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <FinanceModal />
+          </Box>
+        </Modal>
+      </div>
     </div>
   );
 }
