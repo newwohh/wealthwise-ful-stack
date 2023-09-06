@@ -1,0 +1,15 @@
+export const fStyle = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  height: "500px",
+  width: 600,
+  bgcolor: "background.paper",
+  borderRadius: "20px",
+  boxShadow: 24,
+  p: 4,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};

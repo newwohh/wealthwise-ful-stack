@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import { titleHandler } from "@/actions/actions";
 import PageWrapper from "@/components/PageWrapper";
 import {
@@ -23,6 +23,8 @@ import {
   Legend,
 } from "recharts";
 import linechart from "../../../../assets/chart.jpg";
+import useAuth from "@/context/useAuth";
+import AuthContext from "@/context/authContext";
 
 const data = [
   {
@@ -68,6 +70,11 @@ function AccountBalance() {
     titleHandler("Account Balance");
   }, []);
 
+  const { user } = useContext(AuthContext);
+
+  const userData = user.data;
+  console.log(userData);
+
   return (
     <PageWrapper>
       <Box sx={{ display: "flex" }}>
@@ -84,12 +91,12 @@ function AccountBalance() {
           >
             <Card>
               <CardContent sx={{ display: "flex" }}>
-                <Box>
-                  <Image src={linechart} alt="any" height={50} width={50} />
-                </Box>
+                <Image src={linechart} alt="any" height={50} width={50} />
                 <Box>
                   <Typography>Monthly Income</Typography>
-                  <Typography sx={{ fontWeight: 1000 }}>$1252</Typography>
+                  <Typography sx={{ fontWeight: 1000 }}>
+                    ${userData?.annualIncome / 12 || ""}
+                  </Typography>
                 </Box>
               </CardContent>
             </Card>
@@ -101,7 +108,9 @@ function AccountBalance() {
                 </Box>
                 <Box>
                   <Typography>Monthly Expense</Typography>
-                  <Typography sx={{ fontWeight: 1000 }}>$1252</Typography>
+                  <Typography sx={{ fontWeight: 1000 }}>
+                    ${userData?.food + userData?.rent / 12 || ""}
+                  </Typography>
                 </Box>
               </CardContent>
             </Card>
@@ -113,7 +122,9 @@ function AccountBalance() {
                 </Box>
                 <Box>
                   <Typography>Investments</Typography>
-                  <Typography sx={{ fontWeight: 1000 }}>$1252</Typography>
+                  <Typography sx={{ fontWeight: 1000 }}>
+                    ${userData?.investement / 12 || ""}
+                  </Typography>
                 </Box>
               </CardContent>
             </Card>
@@ -191,7 +202,6 @@ function AccountBalance() {
             <Box sx={{ marginTop: "40px" }}>
               <Typography variant="h6">Transactions</Typography>
             </Box>
-            <List></List>
           </Box>
         </Box>
       </Box>

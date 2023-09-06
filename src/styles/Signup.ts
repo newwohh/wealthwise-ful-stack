@@ -1,19 +1,4 @@
 export const signupstyles = {
-  containerdiv: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: "100vh",
-    width: "200vh",
-  },
-  firstdiv: {
-    width: "100vh",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   signupbtn: {
     width: "300px",
     height: "50px",

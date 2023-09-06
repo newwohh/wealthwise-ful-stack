@@ -25,17 +25,3 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: error.message });
   }
 }
-
-export async function GET(request: NextRequest) {
-  try {
-    const reqBody = await request.json();
-    const { user } = reqBody;
-
-    const FinanceData = await FinancialData.findOne({ user });
-
-    return NextResponse.json({ message: "success", user: FinanceData });
-  } catch (error: any) {
-    console.log(error.message);
-    return NextResponse.json({ message: error.message });
-  }
-}

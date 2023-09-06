@@ -1,26 +1,6 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { TextField } from "@mui/material";
+import { TextField, Box, Button } from "@mui/material";
 import axios from "axios";
-
-export const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  height: "500px",
-  width: 600,
-  bgcolor: "background.paper",
-  borderRadius: "20px",
-  boxShadow: 24,
-  p: 4,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
 
 export default function FinanceModal() {
   let user = JSON.parse(localStorage.getItem("user")!);
@@ -92,7 +72,7 @@ export default function FinanceModal() {
             label="Investment"
             variant="outlined"
             onChange={(e) => {
-              setFinanceData({ ...findanceData, investemet: e.target.value });
+              setFinanceData({ ...findanceData, investement: e.target.value });
             }}
           />
           <TextField id="outlined-basic" label="Other" variant="outlined" />

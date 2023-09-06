@@ -3,7 +3,8 @@ import Image from "next/image";
 import React from "react";
 import signup from "../assets/signup.jpg";
 import { usePathname } from "next/navigation";
-import FinanceModal, { style } from "./FInanceModal";
+import FinanceModal from "./FInanceModal";
+import { fStyle } from "@/styles/Finance";
 
 function Drawer(): JSX.Element {
   const links: { title: string; link: string }[] = [
@@ -105,7 +106,7 @@ function Drawer(): JSX.Element {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
+          <Box sx={fStyle}>
             <FinanceModal />
           </Box>
         </Modal>

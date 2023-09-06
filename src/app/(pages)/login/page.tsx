@@ -2,7 +2,13 @@
 
 import React from "react";
 import { titleHandler } from "@/actions/actions";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import Link from "next/link";
 import { loginstyles } from "@/styles/Login";
 import { useRouter } from "next/navigation";
@@ -32,12 +38,26 @@ const Login = () => {
     }
   };
 
+  const isMatch = useMediaQuery("(min-width: 600px)");
+
   return (
-    <div style={loginstyles.logincontainer}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: isMatch ? "200vh" : "380px",
+        backgroundColor: "#f6f6f6",
+        backgroundImage: "linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%)",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
+          justifyContent: "center",
+          alignItems: isMatch ? "start" : "center",
         }}
       >
         <Box sx={{ marginBottom: "50px" }}>
@@ -55,7 +75,7 @@ const Login = () => {
           <TextField
             label="Email"
             placeholder="Email"
-            sx={{ width: "400px", marginBottom: "30px" }}
+            sx={{ width: isMatch ? "400px" : "300px", marginBottom: "30px" }}
             variant="standard"
             value={loginCredentials.email}
             onChange={(e) =>
@@ -69,7 +89,7 @@ const Login = () => {
             label="Password"
             placeholder="Password"
             type="password"
-            sx={{ width: "400px", marginBottom: "" }}
+            sx={{ width: isMatch ? "400px" : "300px", marginBottom: "" }}
             variant="standard"
             value={loginCredentials.password}
             onChange={(e) =>
@@ -87,12 +107,18 @@ const Login = () => {
             Submit
           </Button>
         </form>
-        <Box>
+        <Box
+          sx={{
+            display: isMatch ? "block" : "flex",
+            flexDirection: isMatch ? "row" : "column",
+          }}
+        >
           <Link
             style={{
               color: "black",
               textDecoration: "none",
-              marginRight: "50px",
+              marginRight: isMatch ? "50px" : "20px",
+              marginBottom: isMatch ? 0 : "30px",
             }}
             href={"/forgotpassword"}
           >
