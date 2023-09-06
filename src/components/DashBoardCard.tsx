@@ -1,13 +1,23 @@
 import React from "react";
-import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { BackgroundColorsType } from "@/app/(pages)/home/page";
 
-function DashBoardCard({ bg }: any) {
-  console.log(bg);
+function DashBoardCard({ bg }: { bg: BackgroundColorsType }) {
+  const isMatch = useMediaQuery("(min-width: 600px)");
+
   return (
     <div>
       <Card
         sx={{
+          marginTop: isMatch ? 0 : "20px",
           width: 290,
           borderRadius: "30px",
           padding: "20px",

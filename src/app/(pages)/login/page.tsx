@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const Login = () => {
+  const isMatch = useMediaQuery("(min-width: 600px)");
   const router = useRouter();
   const [loginCredentials, setLoginCredentials] = React.useState({
     email: "",
@@ -37,8 +38,6 @@ const Login = () => {
       console.log(error);
     }
   };
-
-  const isMatch = useMediaQuery("(min-width: 600px)");
 
   return (
     <div

@@ -11,6 +11,7 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import DashBoardCard from "@/components/DashBoardCard";
 import { styled } from "@mui/material/styles";
@@ -34,15 +35,20 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
+export type BackgroundColorsType = {
+  bgColor: string;
+  bgImage: string;
+};
+
 const Home = (): JSX.Element => {
   const d = new Date();
   let date: string = d.toISOString();
-
+  const isMatch = useMediaQuery("(min-width: 600px)");
   React.useEffect(() => {
     titleHandler("Dashboard");
   }, []);
 
-  let bgArray: any[] = [
+  let bgArray: BackgroundColorsType[] = [
     {
       bgColor: "#74EBD5",
       bgImage: "linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%)",
@@ -69,7 +75,13 @@ const Home = (): JSX.Element => {
         <Box sx={{ marginTop: "70px" }}>
           <Chart data={UserData} />
         </Box>
-        <Box sx={{ marginTop: "70px", display: "flex" }}>
+        <Box
+          sx={{
+            marginTop: "70px",
+            display: "flex",
+            flexDirection: isMatch ? "row" : "column",
+          }}
+        >
           {[1, 2, 3].map((el, i) => {
             return <DashBoardCard key={el} bg={bgArray[i]} />;
           })}

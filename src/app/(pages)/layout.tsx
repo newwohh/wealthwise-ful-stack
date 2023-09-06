@@ -2,7 +2,6 @@
 
 import React from "react";
 import { AuthProvider } from "@/context/authContext";
-import { Drawer } from "@mui/material";
 import axios from "axios";
 
 export default function HomeLayout({
@@ -30,10 +29,7 @@ export default function HomeLayout({
 
   return (
     <AuthProvider value={{ user, setUser }}>
-      <main>
-        <Drawer />
-        {children}
-      </main>
+      <main>{children}</main>
     </AuthProvider>
   );
 }
