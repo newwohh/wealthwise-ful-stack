@@ -2,7 +2,14 @@
 
 import React from "react";
 import PageWrapper from "@/components/PageWrapper";
-import { Box, FormControl, Input, InputLabel, Typography } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  Input,
+  InputLabel,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { titleHandler } from "@/actions/actions";
@@ -18,10 +25,17 @@ const Profile = () => {
     titleHandler("Profile");
   }, []);
 
+  const isMatch = useMediaQuery("(min-width: 600px)");
+
   return (
     <PageWrapper>
-      <Box sx={{ padding: "50px" }}>
-        <Box sx={{ display: "grid", gridTemplateColumns: "500px 500px" }}>
+      <Box sx={{ padding: isMatch ? "50px" : "0px" }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: isMatch ? "500px 500px" : "500px",
+          }}
+        >
           <FormControl
             variant="standard"
             sx={{ marginRight: "100px", marginBottom: "100px" }}

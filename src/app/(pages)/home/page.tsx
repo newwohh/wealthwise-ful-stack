@@ -70,7 +70,7 @@ const Home = (): JSX.Element => {
           <Typography variant="h4" sx={{ fontWeight: 1000 }}>
             Dashboard
           </Typography>
-          <Typography>{`${date}`}</Typography>
+          <Typography>{"any"}</Typography>
         </Box>
         <Box sx={{ marginTop: "70px" }}>
           <Chart data={UserData} />
@@ -79,7 +79,6 @@ const Home = (): JSX.Element => {
           sx={{
             marginTop: "70px",
             display: "flex",
-            flexDirection: isMatch ? "row" : "column",
           }}
         >
           {[1, 2, 3].map((el, i) => {
@@ -90,7 +89,11 @@ const Home = (): JSX.Element => {
           <Typography variant="h5">Today</Typography>
           <Divider />
           <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            sx={{
+              width: isMatch ? "100%" : "500px",
+              maxWidth: 360,
+              bgcolor: "background.paper",
+            }}
           >
             <ListItem
               alignItems="flex-start"

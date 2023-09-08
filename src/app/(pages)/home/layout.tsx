@@ -14,7 +14,7 @@ export default function DashboardLayout({
 
   return (
     <section style={{ display: "flex" }}>
-      {isMatch ? <Drawer /> : <MobileDrawer />}
+      {!isMatch ? <MobileDrawer /> : <Drawer />}
       {children}
     </section>
   );

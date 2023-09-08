@@ -8,14 +8,13 @@ import {
   Card,
   CardContent,
   Divider,
-  List,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -23,7 +22,6 @@ import {
   Legend,
 } from "recharts";
 import linechart from "../../../../assets/chart.jpg";
-import useAuth from "@/context/useAuth";
 import AuthContext from "@/context/authContext";
 
 const data = [
@@ -69,16 +67,15 @@ function AccountBalance() {
   React.useEffect(() => {
     titleHandler("Account Balance");
   }, []);
-
   const { user } = useContext(AuthContext);
-
   const userData = user.data;
   console.log(userData);
+  const isMatch = useMediaQuery("(min-width: 600px)");
 
   return (
     <PageWrapper>
-      <Box sx={{ display: "flex" }}>
-        <Box sx={{ width: "900px" }}>
+      <Box sx={{ display: isMatch ? "flex" : "block" }}>
+        <Box sx={{ width: isMatch ? "900px" : "400px" }}>
           <Typography variant="h4" sx={{ fontWeight: 1000 }}>
             Your Income
           </Typography>
@@ -87,9 +84,10 @@ function AccountBalance() {
               display: "flex",
               justifyContent: "space-between",
               marginTop: "70px",
+              flexDirection: isMatch ? "row" : "column",
             }}
           >
-            <Card>
+            <Card sx={{}}>
               <CardContent sx={{ display: "flex" }}>
                 <Image src={linechart} alt="any" height={50} width={50} />
                 <Box>
@@ -131,8 +129,8 @@ function AccountBalance() {
           </Box>
           <Box sx={{ marginTop: "150px" }}>
             <BarChart
-              width={900}
-              height={400}
+              width={isMatch ? 900 : 300}
+              height={isMatch ? 400 : 250}
               data={data}
               margin={{
                 top: 5,
@@ -176,8 +174,8 @@ function AccountBalance() {
             <Box>
               <Card
                 sx={{
-                  width: "300px",
-                  height: "350px",
+                  width: isMatch ? "300px" : "200",
+                  height: isMatch ? "350px" : "200",
                   borderRadius: "30px",
                   display: "flex",
                   flexDirection: "column",
