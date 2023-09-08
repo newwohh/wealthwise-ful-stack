@@ -3,7 +3,7 @@
 import Drawer from "@/components/Drawer";
 import MobileDrawer from "@/components/MobileDrawer";
 import { useMediaQuery } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function DashboardLayout({
   children,
@@ -11,10 +11,18 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const isMatch = useMediaQuery("(min-width: 600px)");
+  const [showMobileDrawer, setShowMobileDrawer] = useState(false);
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setShowMobileDrawer(!isMatch);
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [isMatch]);
 
   return (
     <section style={{ display: "flex" }}>
-      {!isMatch ? <MobileDrawer /> : <Drawer />}
+      {showMobileDrawer && !isMatch ? <MobileDrawer /> : <Drawer />}
       {children}
     </section>
   );
