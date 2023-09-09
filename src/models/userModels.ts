@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+interface NewUser {
+  username: string;
+  email: string;
+  password: string;
+  forgotPassword?: string;
+  forgotPasswordTokenExpiry?: string;
+}
+
+const userSchema = new mongoose.Schema<NewUser>({
   username: {
     type: String,
     required: [true, "please provide password"],
@@ -17,6 +25,7 @@ const userSchema = new mongoose.Schema({
   forgotPasswordTokenExpiry: String,
 });
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
+const User: mongoose.Model<any> =
+  mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;

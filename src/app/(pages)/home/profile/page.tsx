@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { titleHandler } from "@/actions/actions";
 
-const Profile = () => {
+const Profile = (): JSX.Element => {
   const isMatch: boolean = useMediaQuery("(min-width: 600px)");
   const [age, setAge] = React.useState<string>("");
   const handleChange = (event: SelectChangeEvent) => {

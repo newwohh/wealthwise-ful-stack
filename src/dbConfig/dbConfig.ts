@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
 export async function connect() {
-  let DB = "mongodb://localhost:27017";
+  let DB: string = "mongodb://localhost:27017";
   try {
-    const connection = (await mongoose.connect(DB!)).connection;
+    const connection: mongoose.Connection = (await mongoose.connect(DB!))
+      .connection;
 
     connection.on("connected", () => {
       console.log("Succes DB");

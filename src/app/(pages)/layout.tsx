@@ -2,19 +2,21 @@
 
 import React from "react";
 import { AuthProvider } from "@/context/authContext";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = React.useState("");
+  const [user, setUser] = React.useState<any>("");
 
   const getFinancialData = async (user: string) => {
-    const currentUser = JSON.parse(localStorage.getItem("user")!);
+    const currentUser: any = JSON.parse(localStorage.getItem("user")!);
     try {
-      const res = await axios.get("/api/financedata/" + currentUser);
+      const res: AxiosResponse<any> = await axios.get<any>(
+        "/api/financedata/" + currentUser
+      );
       user = res.data;
       setUser(user);
       return console.log(res.data);

@@ -1,6 +1,15 @@
 import mongoose from "mongoose";
 
-const financeSchema = new mongoose.Schema({
+interface NewFinanceData {
+  annualIncome: number;
+  user: any;
+  rent: number;
+  food: number;
+  investement: number;
+  goal: number;
+}
+
+const financeSchema = new mongoose.Schema<NewFinanceData>({
   annualIncome: {
     type: Number,
     required: [true, "please provide annual income"],
@@ -27,7 +36,7 @@ const financeSchema = new mongoose.Schema({
   },
 });
 
-const FinancialData =
+const FinancialData: mongoose.Model<any> =
   mongoose.models.FinancialData ||
   mongoose.model("FinancialData", financeSchema);
 

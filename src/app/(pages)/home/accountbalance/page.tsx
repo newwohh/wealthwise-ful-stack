@@ -31,6 +31,11 @@ interface DataType {
   amt: number;
 }
 
+type UserContext = {
+  user: any;
+  setUser: (user: any) => void;
+};
+
 interface UserData {
   annualIncome: number;
   user: string;
@@ -79,11 +84,11 @@ const data: DataType[] = [
   },
 ];
 
-function AccountBalance() {
+function AccountBalance(): React.JSX.Element {
   React.useEffect(() => {
     titleHandler("Account Balance");
   }, []);
-  const { user } = useContext(AuthContext);
+  const { user } = useContext<UserContext>(AuthContext);
   const userData: UserData = user.data;
   console.log(userData);
   const isMatch: boolean = useMediaQuery("(min-width: 600px)");

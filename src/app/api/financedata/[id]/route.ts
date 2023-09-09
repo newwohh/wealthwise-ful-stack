@@ -7,12 +7,12 @@ connect();
 interface FinancialDataDocument {
   _id: string;
   annualIncome: number;
-  user: string;
+  user: any;
   rent: number;
   food: number;
   investement: number;
   goal: number;
-  __v: number;
+  __v?: number;
 }
 
 export async function GET(
@@ -20,10 +20,10 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = params.id;
+    const id: string = params.id;
     console.log(params.id);
     const FinanceData: FinancialDataDocument | null =
-      await FinancialData.findOne({ user: id });
+      await FinancialData.findOne<FinancialDataDocument>({ user: id });
     console.log(FinanceData);
 
     return NextResponse.json({ message: "success", data: FinanceData });

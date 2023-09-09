@@ -13,7 +13,7 @@ export default function DashboardLayout({
   const isMatch: boolean = useMediaQuery("(min-width: 600px)");
   const [showMobileDrawer, setShowMobileDrawer] = useState<boolean>(false);
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    const timeoutId: NodeJS.Timeout = setTimeout(() => {
       setShowMobileDrawer(!isMatch);
     }, 300);
 
