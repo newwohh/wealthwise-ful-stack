@@ -24,7 +24,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
 }>(({ theme, open }) => ({
   flexGrow: 1,
-  padding: theme.spacing(3),
+  padding: theme.spacing(0.5),
   transition: theme.transitions.create("margin", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -64,7 +64,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
@@ -72,11 +71,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function MobileDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -84,7 +81,7 @@ export default function MobileDrawer() {
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar sx={{ backgroundColor: "black" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -148,7 +145,7 @@ export default function MobileDrawer() {
           ))}
         </List>
       </Drawer>
-      <Main open={open}></Main>
+      <Main open={open} sx={{ marginTop: "100px" }}></Main>
     </Box>
   );
 }

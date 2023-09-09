@@ -79,6 +79,7 @@ const Home = (): JSX.Element => {
           sx={{
             marginTop: "70px",
             display: "flex",
+            flexDirection: isMatch ? "row" : "column",
           }}
         >
           {[1, 2, 3].map((el, i) => {
@@ -103,7 +104,7 @@ const Home = (): JSX.Element => {
                 </IconButton>
               }
               sx={{
-                width: "1000px",
+                width: isMatch ? "1000px" : "450px",
               }}
             >
               <ListItemText

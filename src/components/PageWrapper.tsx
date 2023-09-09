@@ -13,9 +13,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   }, [isMatch]);
   return (
     <>
-      {showMobileDrawer && isMatch ? (
-        <div>{children}</div>
-      ) : (
+      {isMatch ? (
         <div
           style={{ padding: "70px", backgroundColor: "black", width: "100%" }}
         >
@@ -32,6 +30,8 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
             {children}
           </div>
         </div>
+      ) : (
+        <div style={{ padding: 0 }}>{children}</div>
       )}
     </>
   );
