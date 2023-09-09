@@ -13,9 +13,9 @@ function Drawer(): JSX.Element {
     { title: "Profile", link: "/home/profile" },
     { title: "Logout", link: "/logout" },
   ];
-  const path = usePathname();
+  const path: string = usePathname();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 

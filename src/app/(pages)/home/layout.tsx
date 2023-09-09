@@ -10,8 +10,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isMatch = useMediaQuery("(min-width: 600px)");
-  const [showMobileDrawer, setShowMobileDrawer] = useState(false);
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
+  const [showMobileDrawer, setShowMobileDrawer] = useState<boolean>(false);
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setShowMobileDrawer(!isMatch);

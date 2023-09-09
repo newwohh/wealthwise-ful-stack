@@ -1,10 +1,17 @@
 import * as React from "react";
 import { TextField, Box, Button } from "@mui/material";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
-export default function FinanceModal() {
+export default function FinanceModal(): JSX.Element {
   let user = JSON.parse(localStorage.getItem("user")!);
-  const [findanceData, setFinanceData] = React.useState<any>({
+  const [findanceData, setFinanceData] = React.useState<{
+    annualIncome: string;
+    user: string;
+    rent: string;
+    food: string;
+    investement: string;
+    goal: string;
+  }>({
     annualIncome: "",
     user: user,
     rent: "",
@@ -15,7 +22,10 @@ export default function FinanceModal() {
 
   const modalSubmitHandler = async () => {
     try {
-      const res = await axios.post("/api/financedata", findanceData);
+      const res: AxiosResponse<any> = await axios.post(
+        "/api/financedata",
+        findanceData
+      );
       console.log(res);
     } catch (error: any) {
       console.log(error.message);

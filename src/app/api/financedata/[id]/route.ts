@@ -4,6 +4,17 @@ import { NextResponse, NextRequest } from "next/server";
 
 connect();
 
+interface FinancialDataDocument {
+  _id: string;
+  annualIncome: number;
+  user: string;
+  rent: number;
+  food: number;
+  investement: number;
+  goal: number;
+  __v: number;
+}
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -11,7 +22,8 @@ export async function GET(
   try {
     const id = params.id;
     console.log(params.id);
-    const FinanceData = await FinancialData.findOne({ user: id });
+    const FinanceData: FinancialDataDocument | null =
+      await FinancialData.findOne({ user: id });
     console.log(FinanceData);
 
     return NextResponse.json({ message: "success", data: FinanceData });
@@ -27,9 +39,7 @@ export async function PUT(
 ) {
   try {
     const id = params.id;
-
     const { annualIncome } = await request.json();
-
     const userData = await FinancialData.findOneAndUpdate(
       { user: id },
       { annualIncome: annualIncome },

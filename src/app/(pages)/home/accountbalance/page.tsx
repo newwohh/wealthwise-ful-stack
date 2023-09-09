@@ -24,7 +24,23 @@ import {
 import linechart from "../../../../assets/chart.jpg";
 import AuthContext from "@/context/authContext";
 
-const data = [
+interface DataType {
+  name: string;
+  Income: number;
+  Expense: number;
+  amt: number;
+}
+
+interface UserData {
+  annualIncome: number;
+  user: string;
+  rent: number;
+  food: number;
+  investement: number;
+  goal: number;
+}
+
+const data: DataType[] = [
   {
     name: "Janury",
     Income: 4000,
@@ -68,9 +84,9 @@ function AccountBalance() {
     titleHandler("Account Balance");
   }, []);
   const { user } = useContext(AuthContext);
-  const userData = user.data;
+  const userData: UserData = user.data;
   console.log(userData);
-  const isMatch = useMediaQuery("(min-width: 600px)");
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
 
   return (
     <PageWrapper>

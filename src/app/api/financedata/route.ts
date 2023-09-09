@@ -5,9 +5,18 @@ import FinancialData from "@/models/financeModel";
 
 connect();
 
+interface RequestBody {
+  annualIncome: string;
+  user: string;
+  rent: number;
+  food: number;
+  investement: number;
+  goal: number;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const reqBody = await request.json();
+    const reqBody: RequestBody = await request.json();
     const { annualIncome, user, rent, food, investement, goal } = reqBody;
     const FinanceData = new FinancialData({
       annualIncome,

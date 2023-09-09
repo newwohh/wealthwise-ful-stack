@@ -14,7 +14,7 @@ const Signup: React.FC = () => {
     titleHandler("Register");
   }, []);
 
-  const isMatch = useMediaQuery("(min-width: 600px)");
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
 
   return (
     <div

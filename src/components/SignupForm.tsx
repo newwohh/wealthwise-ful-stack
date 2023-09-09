@@ -10,22 +10,32 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+
+interface User {
+  email: string;
+  password: string;
+  username: string;
+}
 
 const SignupForm: React.FC = () => {
-  const router = useRouter();
-  const [user, setUser] = React.useState({
+  const router: AppRouterInstance = useRouter();
+  const [user, setUser] = React.useState<User>({
     email: "",
     password: "",
     username: "",
   });
 
-  const isMatch = useMediaQuery("(min-width: 600px)");
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
 
   const signupHandler = async () => {
     try {
-      const res = await axios.post("/api/users/signup", user);
+      const res: AxiosResponse<any> = await axios.post<User>(
+        "/api/users/signup",
+        user
+      );
       console.log(res);
       router.push("/login");
     } catch (error: any) {

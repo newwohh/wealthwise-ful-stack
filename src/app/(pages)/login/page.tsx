@@ -12,12 +12,23 @@ import {
 import Link from "next/link";
 import { loginstyles } from "@/styles/Login";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { NextResponse } from "next/server";
+import { StringExpressionOperator } from "mongoose";
 
-const Login = () => {
-  const isMatch = useMediaQuery("(min-width: 600px)");
-  const router = useRouter();
-  const [loginCredentials, setLoginCredentials] = React.useState({
+interface LoginResponse {
+  message: string;
+  user: any;
+}
+
+const Login: React.FC = () => {
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
+  const router: AppRouterInstance = useRouter();
+  const [loginCredentials, setLoginCredentials] = React.useState<{
+    email: string;
+    password: string;
+  }>({
     email: "",
     password: "",
   });
@@ -28,7 +39,10 @@ const Login = () => {
 
   const loginHandler = async () => {
     try {
-      const res = await axios.post("/api/users/login", loginCredentials);
+      const res: AxiosResponse<LoginResponse> = await axios.post<LoginResponse>(
+        "/api/users/login",
+        loginCredentials
+      );
       console.log(res.data);
       if (res.data.message === "success") {
         router.push("/home");

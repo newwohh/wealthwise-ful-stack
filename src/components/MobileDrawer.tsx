@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled, useTheme, Theme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
@@ -68,9 +68,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function MobileDrawer() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+export default function MobileDrawer(): JSX.Element {
+  const theme: Theme = useTheme();
+  const [open, setOpen] = React.useState<boolean>(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };

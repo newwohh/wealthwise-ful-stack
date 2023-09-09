@@ -41,9 +41,9 @@ export type BackgroundColorsType = {
 };
 
 const Home = (): JSX.Element => {
-  const d = new Date();
+  const d: Date = new Date();
   let date: string = d.toISOString();
-  const isMatch = useMediaQuery("(min-width: 600px)");
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
   React.useEffect(() => {
     titleHandler("Dashboard");
   }, []);

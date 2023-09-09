@@ -15,17 +15,14 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { titleHandler } from "@/actions/actions";
 
 const Profile = () => {
-  const [age, setAge] = React.useState("");
-
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
+  const [age, setAge] = React.useState<string>("");
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
   };
-
   React.useEffect(() => {
     titleHandler("Profile");
   }, []);
-
-  const isMatch = useMediaQuery("(min-width: 600px)");
 
   return (
     <PageWrapper>

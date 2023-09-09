@@ -11,7 +11,7 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { BackgroundColorsType } from "@/app/(pages)/home/page";
 
 function DashBoardCard({ bg }: { bg: BackgroundColorsType }) {
-  const isMatch = useMediaQuery("(min-width: 600px)");
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
 
   return (
     <div>

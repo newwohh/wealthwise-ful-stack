@@ -4,7 +4,7 @@ import Image from "next/image";
 import saving from "../assets/saving.jpg";
 import moneytree from "../assets/moneytree.jpg";
 
-const TipsCard = () => {
+const TipsCard = (): JSX.Element => {
   return (
     <Card
       sx={{
