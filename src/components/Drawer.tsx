@@ -6,15 +6,19 @@ import { usePathname } from "next/navigation";
 import FinanceModal from "./FInanceModal";
 import { fStyle } from "@/styles/Finance";
 
+interface DrawerLink {
+  title: string;
+  link: string;
+}
+
 function Drawer(): JSX.Element {
-  const links: { title: string; link: string }[] = [
+  const links: DrawerLink[] = [
     { title: "Home", link: "/home" },
     { title: "Account Balance", link: "/home/accountbalance" },
     { title: "Profile", link: "/home/profile" },
     { title: "Logout", link: "/logout" },
   ];
   const path: string = usePathname();
-
   const [open, setOpen] = React.useState<boolean>(false);
   const handleOpen = (): void => setOpen(true);
   const handleClose = (): void => setOpen(false);

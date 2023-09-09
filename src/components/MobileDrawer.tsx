@@ -18,7 +18,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
-const drawerWidth = 240;
+const drawerWidth: number = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
@@ -60,7 +60,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const DrawerHeader = styled("div")(({ theme }) => ({
+const DrawerHeader = styled("div")(({ theme }): any => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
@@ -71,10 +71,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function MobileDrawer(): JSX.Element {
   const theme: Theme = useTheme();
   const [open, setOpen] = React.useState<boolean>(false);
-  const handleDrawerOpen = () => {
+  const handleDrawerOpen = (): void => {
     setOpen(true);
   };
-  const handleDrawerClose = () => {
+  const handleDrawerClose = (): void => {
     setOpen(false);
   };
 

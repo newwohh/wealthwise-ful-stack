@@ -1,11 +1,15 @@
 import { useMediaQuery } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
-const PageWrapper = ({ children }: { children: React.ReactNode }) => {
-  const isMatch = useMediaQuery("(min-width: 600px)");
+const PageWrapper = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): React.JSX.Element => {
+  const isMatch: boolean = useMediaQuery("(min-width: 600px)");
   const [showMobileDrawer, setShowMobileDrawer] = useState(false);
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    const timeoutId: NodeJS.Timeout = setTimeout(() => {
       setShowMobileDrawer(!isMatch);
     }, 300);
 

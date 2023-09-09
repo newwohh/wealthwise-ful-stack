@@ -16,7 +16,6 @@ function DashBoardCard({
   bg: BackgroundColorsType;
 }): React.JSX.Element {
   const isMatch: boolean = useMediaQuery("(min-width: 600px)");
-
   return (
     <div>
       <Card
