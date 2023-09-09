@@ -10,7 +10,11 @@ import {
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { BackgroundColorsType } from "@/app/(pages)/home/page";
 
-function DashBoardCard({ bg }: { bg: BackgroundColorsType }) {
+function DashBoardCard({
+  bg,
+}: {
+  bg: BackgroundColorsType;
+}): React.JSX.Element {
   const isMatch: boolean = useMediaQuery("(min-width: 600px)");
 
   return (
