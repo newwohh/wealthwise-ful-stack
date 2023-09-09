@@ -1,4 +1,4 @@
-import { Box, Button, Link, Modal, Typography } from "@mui/material";
+import { Box, Link, Modal, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import signup from "../assets/signup.jpg";
@@ -16,8 +16,8 @@ function Drawer(): JSX.Element {
   const path: string = usePathname();
 
   const [open, setOpen] = React.useState<boolean>(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = (): void => setOpen(true);
+  const handleClose = (): void => setOpen(false);
 
   console.log(path);
   return (

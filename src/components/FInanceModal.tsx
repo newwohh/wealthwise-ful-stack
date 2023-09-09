@@ -2,16 +2,18 @@ import * as React from "react";
 import { TextField, Box, Button } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 
+interface FinanceData {
+  annualIncome: string;
+  user: any;
+  rent: string;
+  food: string;
+  investement: string;
+  goal: string;
+}
+
 export default function FinanceModal(): JSX.Element {
-  let user = JSON.parse(localStorage.getItem("user")!);
-  const [findanceData, setFinanceData] = React.useState<{
-    annualIncome: string;
-    user: string;
-    rent: string;
-    food: string;
-    investement: string;
-    goal: string;
-  }>({
+  let user: string | null = JSON.parse(localStorage.getItem("user")!);
+  const [findanceData, setFinanceData] = React.useState<FinanceData>({
     annualIncome: "",
     user: user,
     rent: "",
@@ -20,9 +22,9 @@ export default function FinanceModal(): JSX.Element {
     goal: "",
   });
 
-  const modalSubmitHandler = async () => {
+  const modalSubmitHandler = async (): Promise<void> => {
     try {
-      const res: AxiosResponse<any> = await axios.post(
+      const res: AxiosResponse<FinanceData> = await axios.post<FinanceData>(
         "/api/financedata",
         findanceData
       );
