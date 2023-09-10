@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export async function connect() {
+export async function connect(): Promise<void> {
   let DB: string = "mongodb://localhost:27017";
   try {
     const connection: mongoose.Connection = (await mongoose.connect(DB!))
@@ -10,7 +10,7 @@ export async function connect() {
       console.log("Succes DB");
     });
 
-    connection.on("error", (err) => {
+    connection.on("error", (err: any) => {
       console.log("Err DB" + err);
       process.exit();
     });

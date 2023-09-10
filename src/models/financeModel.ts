@@ -9,32 +9,34 @@ interface NewFinanceData {
   goal: number;
 }
 
-const financeSchema = new mongoose.Schema<NewFinanceData>({
-  annualIncome: {
-    type: Number,
-    required: [true, "please provide annual income"],
-  },
-  user: {
-    type: mongoose.Schema.ObjectId,
-    required: [true, "please provide  user"],
-  },
-  rent: {
-    type: Number,
-    required: [true, "please provide  rent"],
-  },
-  food: {
-    type: Number,
-    required: [true, "please provide  food"],
-  },
-  investement: {
-    type: Number,
-    required: [true, "please provide  investement"],
-  },
-  goal: {
-    type: Number,
-    required: [true, "please provide  goal"],
-  },
-});
+const financeSchema: mongoose.Schema<any> = new mongoose.Schema<NewFinanceData>(
+  {
+    annualIncome: {
+      type: Number,
+      required: [true, "please provide annual income"],
+    },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      required: [true, "please provide  user"],
+    },
+    rent: {
+      type: Number,
+      required: [true, "please provide  rent"],
+    },
+    food: {
+      type: Number,
+      required: [true, "please provide  food"],
+    },
+    investement: {
+      type: Number,
+      required: [true, "please provide  investement"],
+    },
+    goal: {
+      type: Number,
+      required: [true, "please provide  goal"],
+    },
+  }
+);
 
 const FinancialData: mongoose.Model<any> =
   mongoose.models.FinancialData ||

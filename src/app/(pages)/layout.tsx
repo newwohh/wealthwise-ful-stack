@@ -11,8 +11,8 @@ export default function HomeLayout({
 }) {
   const [user, setUser] = React.useState<any>("");
 
-  const getFinancialData = async (user: string) => {
-    const currentUser: any = JSON.parse(localStorage.getItem("user")!);
+  const getFinancialData = async (user: string): Promise<void> => {
+    const currentUser: string = JSON.parse(localStorage.getItem("user")!);
     try {
       const res: AxiosResponse<any> = await axios.get<any>(
         "/api/financedata/" + currentUser

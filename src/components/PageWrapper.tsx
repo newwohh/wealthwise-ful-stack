@@ -1,4 +1,4 @@
-import { useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
 const PageWrapper = ({
@@ -17,26 +17,46 @@ const PageWrapper = ({
   }, [isMatch]);
   return (
     <>
-      {isMatch ? (
-        <div
-          style={{ padding: "70px", backgroundColor: "black", width: "100%" }}
+      <Box
+        sx={{
+          padding: {
+            xs: "0px",
+            lg: "70px",
+          },
+          backgroundColor: {
+            xs: "white",
+            lg: "black",
+          },
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            padding: {
+              xs: "0px",
+              lg: "50px",
+            },
+            display: {
+              xs: "block",
+              lg: "flex",
+            },
+            border: "1px solid black",
+            borderRadius: {
+              xs: "none",
+              lg: "30px",
+            },
+            backgroundColor: "white",
+            height: {
+              lg: "750px",
+              xs: "0px",
+            },
+          }}
         >
-          <div
-            style={{
-              padding: "50px",
-              display: "flex",
-              border: "1px solid black",
-              borderRadius: "30px",
-              backgroundColor: "white",
-              height: "750px",
-            }}
-          >
-            {children}
-          </div>
-        </div>
-      ) : (
-        <div style={{ padding: 0 }}>{children}</div>
-      )}
+          {children}
+        </Box>
+        )
+      </Box>
+      )
     </>
   );
 };

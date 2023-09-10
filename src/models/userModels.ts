@@ -8,7 +8,7 @@ interface NewUser {
   forgotPasswordTokenExpiry?: string;
 }
 
-const userSchema = new mongoose.Schema<NewUser>({
+const userSchema: mongoose.Schema<any> = new mongoose.Schema<NewUser>({
   username: {
     type: String,
     required: [true, "please provide password"],

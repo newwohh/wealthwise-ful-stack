@@ -14,30 +14,31 @@ import { loginstyles } from "@/styles/Login";
 import { useRouter } from "next/navigation";
 import axios, { AxiosResponse } from "axios";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
-import { NextResponse } from "next/server";
-import { StringExpressionOperator } from "mongoose";
 
 interface LoginResponse {
   message: string;
   user: any;
 }
 
+interface loginCredentials {
+  email: string;
+  password: string;
+}
+
 const Login: React.FC = () => {
   const isMatch: boolean = useMediaQuery("(min-width: 600px)");
   const router: AppRouterInstance = useRouter();
-  const [loginCredentials, setLoginCredentials] = React.useState<{
-    email: string;
-    password: string;
-  }>({
-    email: "",
-    password: "",
-  });
+  const [loginCredentials, setLoginCredentials] =
+    React.useState<loginCredentials>({
+      email: "",
+      password: "",
+    });
 
   React.useEffect(() => {
     titleHandler("Login");
   }, []);
 
-  const loginHandler = async () => {
+  const loginHandler = async (): Promise<void> => {
     try {
       const res: AxiosResponse<LoginResponse> = await axios.post<LoginResponse>(
         "/api/users/login",

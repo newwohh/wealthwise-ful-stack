@@ -79,7 +79,10 @@ const Home = (): JSX.Element => {
           sx={{
             marginTop: "70px",
             display: "flex",
-            flexDirection: isMatch ? "row" : "column",
+            flexDirection: {
+              xl: "row",
+              xs: "column",
+            },
           }}
         >
           {[1, 2, 3].map((el, i) => {
@@ -91,7 +94,10 @@ const Home = (): JSX.Element => {
           <Divider />
           <List
             sx={{
-              width: isMatch ? "100%" : "500px",
+              width: {
+                lg: "100%",
+                sm: "500px",
+              },
               maxWidth: 360,
               bgcolor: "background.paper",
             }}
@@ -104,7 +110,10 @@ const Home = (): JSX.Element => {
                 </IconButton>
               }
               sx={{
-                width: isMatch ? "1000px" : "450px",
+                width: {
+                  xl: "1000px",
+                  sm: "450px",
+                },
               }}
             >
               <ListItemText

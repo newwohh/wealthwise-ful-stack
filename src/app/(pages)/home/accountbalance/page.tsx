@@ -95,8 +95,8 @@ function AccountBalance(): React.JSX.Element {
 
   return (
     <PageWrapper>
-      <Box sx={{ display: isMatch ? "flex" : "block" }}>
-        <Box sx={{ width: isMatch ? "900px" : "400px" }}>
+      <Box sx={{ display: { lg: "flex", xs: "block" } }}>
+        <Box sx={{ width: { lg: "900px", xs: "400px" } }}>
           <Typography variant="h4" sx={{ fontWeight: 1000 }}>
             Your Income
           </Typography>
@@ -105,7 +105,7 @@ function AccountBalance(): React.JSX.Element {
               display: "flex",
               justifyContent: "space-between",
               marginTop: "70px",
-              flexDirection: isMatch ? "row" : "column",
+              flexDirection: { lg: "row", xs: "column" },
             }}
           >
             <Card sx={{}}>
@@ -195,8 +195,8 @@ function AccountBalance(): React.JSX.Element {
             <Box>
               <Card
                 sx={{
-                  width: isMatch ? "300px" : "200",
-                  height: isMatch ? "350px" : "200",
+                  width: { lg: "300px", xs: "200" },
+                  height: { lg: "350px", xs: "200" },
                   borderRadius: "30px",
                   display: "flex",
                   flexDirection: "column",

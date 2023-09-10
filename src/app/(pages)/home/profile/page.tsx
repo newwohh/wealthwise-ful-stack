@@ -26,11 +26,11 @@ const Profile = (): JSX.Element => {
 
   return (
     <PageWrapper>
-      <Box sx={{ padding: isMatch ? "50px" : "0px" }}>
+      <Box sx={{ padding: { lg: "50px", xs: "0px" } }}>
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: isMatch ? "500px 500px" : "500px",
+            gridTemplateColumns: { lg: "500px 500px", sm: "500px" },
           }}
         >
           <FormControl
