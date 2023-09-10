@@ -20,6 +20,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import linechart from "../../../../assets/chart.jpg";
 import AuthContext from "@/context/authContext";
@@ -149,25 +150,28 @@ function AccountBalance(): React.JSX.Element {
             </Card>
           </Box>
           <Box sx={{ marginTop: "150px" }}>
-            <BarChart
+            <ResponsiveContainer
               width={isMatch ? 900 : 300}
               height={isMatch ? 400 : 250}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
             >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Expense" fill="#8884d8" />
-              <Bar dataKey="Income" fill="#82ca9d" />
-            </BarChart>
+              <BarChart
+                data={data}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="Expense" fill="#8884d8" />
+                <Bar dataKey="Income" fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
           </Box>
         </Box>
         <Divider
