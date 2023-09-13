@@ -37,7 +37,7 @@ const steps = [
 
 const SignupForm: React.FC = () => {
   const router: AppRouterInstance = useRouter();
-  const [financeForm, setFinanceForm] = React.useState(false);
+  const [financeForm, setFinanceForm] = React.useState(true);
   const [user, setUser] = React.useState<User>({
     email: "",
     password: "",
@@ -88,7 +88,11 @@ const SignupForm: React.FC = () => {
         <Typography>Let&apos;s get started with your free trial </Typography>
       </Box>
       {financeForm ? (
-        <>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        >
           <form
             style={{
               display: "flex",
@@ -116,7 +120,7 @@ const SignupForm: React.FC = () => {
             <TextField
               placeholder="Password"
               type="password"
-              sx={{ width: isMatch ? "400px" : "300px", marginBottom: "" }}
+              sx={{ width: isMatch ? "400px" : "300px", marginBottom: "3 0px" }}
               variant="standard"
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
@@ -128,17 +132,18 @@ const SignupForm: React.FC = () => {
             >
               Create account
             </Button>
+            <Link
+              style={{
+                color: "black",
+                textDecoration: "none",
+                marginTop: "20px",
+              }}
+              href={"/login"}
+            >
+              Already registered? Click to login
+            </Link>
           </form>
-          <Link
-            style={{
-              color: "black",
-              textDecoration: "none",
-            }}
-            href={"/login"}
-          >
-            Already registered? Click to login
-          </Link>
-        </>
+        </motion.div>
       ) : (
         <>
           <motion.div
@@ -228,6 +233,22 @@ const SignupForm: React.FC = () => {
           >
             <Button
               sx={{
+                width: "150px",
+                height: "50px",
+                backgroundColor: "black",
+                color: "white",
+                marginTop: "30px",
+                "&:hover": {
+                  backgroundColor: "black",
+                  color: "white",
+                },
+              }}
+              onClick={() => setFinanceForm(true)}
+            >
+              Back
+            </Button>
+            <Button
+              sx={{
                 padding: "15px",
                 backgroundColor: "black",
                 color: "white",
@@ -242,22 +263,6 @@ const SignupForm: React.FC = () => {
               // onClick={() => modalSubmitHandler()}
             >
               Submit
-            </Button>
-            <Button
-              sx={{
-                width: "150px",
-                height: "50px",
-                backgroundColor: "black",
-                color: "white",
-                marginTop: "30px",
-                "&:hover": {
-                  backgroundColor: "black",
-                  color: "white",
-                },
-              }}
-              onClick={() => setFinanceForm(!financeForm)}
-            >
-              Back
             </Button>
           </div>
         </>

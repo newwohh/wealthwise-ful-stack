@@ -3,31 +3,52 @@
 import React from "react";
 import { AuthProvider } from "@/context/authContext";
 import axios, { AxiosResponse } from "axios";
+import { useQuery } from "@tanstack/react-query";
+
+interface UserFinancialData {
+  message: string;
+  data: any;
+}
+
+interface ResponseData {
+  _id: string;
+  annualIncome: number;
+  food: number;
+  goal: number;
+  investement: number;
+  rent: number;
+  user: string;
+}
 
 export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = React.useState<any>("");
+  const [user, setUser] = React.useState<UserFinancialData>({
+    data: "",
+    message: "",
+  });
 
-  const getFinancialData = async (user: string): Promise<void> => {
+  const getFinancialData = async (): Promise<ResponseData> => {
     const currentUser: string = JSON.parse(localStorage.getItem("user")!);
-    try {
-      const res: AxiosResponse<any> = await axios.get<any>(
-        "/api/financedata/" + currentUser
-      );
-      user = res.data;
-      setUser(user);
-      return console.log(res.data);
-    } catch (error: any) {
-      console.log(error.message);
-    }
+    const res: AxiosResponse<any> = await axios.get<ResponseData>(
+      "/api/financedata/" + currentUser
+    );
+    setUser(res.data);
+    return res.data;
   };
 
-  React.useEffect(() => {
-    getFinancialData(user);
-  }, []);
+  const { data, isLoading } = useQuery({
+    queryKey: ["financedata"],
+    queryFn: () => getFinancialData(),
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(user);
 
   return (
     <AuthProvider value={{ user, setUser }}>
