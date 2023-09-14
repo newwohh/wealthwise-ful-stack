@@ -6,6 +6,7 @@ import { Box, FormControl, Input, InputLabel, Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { titleHandler } from "@/actions/actions";
+import AuthContext from "@/context/authContext";
 
 const Profile = (): JSX.Element => {
   const [age, setAge] = React.useState<string>("");
@@ -13,9 +14,9 @@ const Profile = (): JSX.Element => {
     setAge(event.target.value as string);
   };
 
-  const user = JSON.parse(localStorage.getItem("user")!);
-  // const currentUser = user.user;
-
+  const { user } = React.useContext(AuthContext);
+  const currentUser = user.user;
+  // console.log(user.user);
   React.useEffect(() => {
     titleHandler("Profile");
   }, []);
@@ -34,28 +35,28 @@ const Profile = (): JSX.Element => {
             sx={{ marginRight: "100px", marginBottom: "100px" }}
           >
             <InputLabel htmlFor="component-simple">First name</InputLabel>
-            {/* <Input id="component-simple" defaultValue={currentUser?.username} /> */}
+            <Input id="component-simple" defaultValue={currentUser?.username} />
           </FormControl>
           <FormControl
             variant="standard"
             sx={{ marginRight: "100px", marginBottom: "100px" }}
           >
             <InputLabel htmlFor="component-simple">Last name</InputLabel>
-            {/* <Input id="component-simple" defaultValue={currentUser?.username} /> */}
+            <Input id="component-simple" defaultValue={currentUser?.username} />
           </FormControl>
           <FormControl
             variant="standard"
             sx={{ marginRight: "100px", marginBottom: "100px" }}
           >
             <InputLabel htmlFor="component-simple">Email address</InputLabel>
-            {/* <Input id="component-simple" defaultValue={currentUser.email} /> */}
+            <Input id="component-simple" defaultValue={currentUser.email} />
           </FormControl>
           <FormControl
             variant="standard"
             sx={{ marginRight: "100px", marginBottom: "50px" }}
           >
             <InputLabel htmlFor="component-simple">Username</InputLabel>
-            {/* <Input id="component-simple" defaultValue={currentUser?.username} /> */}
+            <Input id="component-simple" defaultValue={currentUser?.username} />
           </FormControl>
           <Box
             sx={{ marginRight: "100px", marginBottom: "50px", minWidth: 120 }}
