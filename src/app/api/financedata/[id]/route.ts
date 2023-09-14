@@ -1,5 +1,6 @@
 import { connect } from "@/dbConfig/dbConfig";
 import FinancialData from "@/models/financeModel";
+import User from "@/models/userModels";
 import { NextResponse, NextRequest } from "next/server";
 
 connect();
@@ -24,9 +25,15 @@ export async function GET(
     console.log(params.id);
     const FinanceData: FinancialDataDocument | null =
       await FinancialData.findOne<FinancialDataDocument>({ user: id });
+
+    const userData = await User.findOne({ _id: id });
     console.log(FinanceData);
 
-    return NextResponse.json({ message: "success", data: FinanceData });
+    return NextResponse.json({
+      message: "success",
+      financedata: FinanceData,
+      user: userData,
+    });
   } catch (error: any) {
     console.log(error.message);
     return NextResponse.json({ message: error.message });

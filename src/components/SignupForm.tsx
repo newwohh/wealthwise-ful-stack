@@ -56,13 +56,29 @@ const SignupForm: React.FC = () => {
 
   const signupHandler = async () => {
     try {
-      // const res: AxiosResponse<any> = await axios.post<User>(
-      //   "/api/users/signup",
-      //   user
-      // );
-      // console.log(res);
-      // router.push("/login");
-      setFinanceForm(!financeForm);
+      const postUser: AxiosResponse<any> = await axios.post<User>(
+        "/api/users/signup",
+        user
+      );
+
+      // Promise.all([postUser, postFinanceData])
+      //   .then((res) => console.log(res))
+      //   .catch((err) => console.log(err));
+
+      console.log(postUser.data.user._id);
+
+      setFinanceData({ ...findanceData, user: postUser.data.user._id });
+      // setFinanceData({ ...findanceData, food: e.target.value });
+
+      const postFinanceData: AxiosResponse<any> = await axios.post<FinanceData>(
+        "/api/financedata",
+        findanceData
+      );
+
+      console.log(postFinanceData);
+
+      router.push("/login");
+      // setFinanceForm(!financeForm);
     } catch (error: any) {
       console.log(error);
     }
@@ -128,7 +144,7 @@ const SignupForm: React.FC = () => {
             <Button
               variant="text"
               sx={signupstyles.signupbtn}
-              onClick={() => signupHandler()}
+              onClick={() => setFinanceForm(!financeForm)}
             >
               Create account
             </Button>
@@ -260,7 +276,7 @@ const SignupForm: React.FC = () => {
                   backgroundColor: "black",
                 },
               }}
-              // onClick={() => modalSubmitHandler()}
+              onClick={() => signupHandler()}
             >
               Submit
             </Button>

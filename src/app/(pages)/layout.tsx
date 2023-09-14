@@ -4,6 +4,7 @@ import React from "react";
 import { AuthProvider } from "@/context/authContext";
 import axios, { AxiosResponse } from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { LinearProgress } from "@mui/material";
 
 interface UserFinancialData {
   message: string;
@@ -35,6 +36,7 @@ export default function HomeLayout({
     const res: AxiosResponse<any> = await axios.get<ResponseData>(
       "/api/financedata/" + currentUser
     );
+    console.log(res.data);
     setUser(res.data);
     return res.data;
   };
@@ -44,15 +46,14 @@ export default function HomeLayout({
     queryFn: () => getFinancialData(),
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  console.log(user);
+  // console.log(user);
 
   return (
     <AuthProvider value={{ user, setUser }}>
-      <main>{children}</main>
+      <main>
+        {isLoading && <LinearProgress />}
+        {children}
+      </main>
     </AuthProvider>
   );
 }
