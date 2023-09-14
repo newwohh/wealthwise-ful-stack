@@ -90,7 +90,7 @@ function AccountBalance(): React.JSX.Element {
     titleHandler("Account Balance");
   }, []);
   const { user } = useContext<UserContext>(AuthContext);
-  const userData: UserData = user.data;
+  const userData: UserData = user.financedata;
   console.log(userData);
   const isMatch: boolean = useMediaQuery("(min-width: 600px)");
 

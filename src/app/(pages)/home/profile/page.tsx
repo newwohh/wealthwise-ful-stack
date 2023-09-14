@@ -34,28 +34,28 @@ const Profile = (): JSX.Element => {
             variant="standard"
             sx={{ marginRight: "100px", marginBottom: "100px" }}
           >
-            <InputLabel htmlFor="component-simple">First name</InputLabel>
+            {/* <InputLabel htmlFor="component-simple">First name</InputLabel> */}
             <Input id="component-simple" defaultValue={currentUser?.username} />
           </FormControl>
           <FormControl
             variant="standard"
             sx={{ marginRight: "100px", marginBottom: "100px" }}
           >
-            <InputLabel htmlFor="component-simple">Last name</InputLabel>
+            {/* <InputLabel htmlFor="component-simple">Last name</InputLabel> */}
             <Input id="component-simple" defaultValue={currentUser?.username} />
           </FormControl>
           <FormControl
             variant="standard"
             sx={{ marginRight: "100px", marginBottom: "100px" }}
           >
-            <InputLabel htmlFor="component-simple">Email address</InputLabel>
-            <Input id="component-simple" defaultValue={currentUser.email} />
+            {/* <InputLabel htmlFor="component-simple">Email address</InputLabel> */}
+            <Input id="component-simple" defaultValue={currentUser?.email} />
           </FormControl>
           <FormControl
             variant="standard"
             sx={{ marginRight: "100px", marginBottom: "50px" }}
           >
-            <InputLabel htmlFor="component-simple">Username</InputLabel>
+            {/* <InputLabel htmlFor="component-simple">Username</InputLabel> */}
             <Input id="component-simple" defaultValue={currentUser?.username} />
           </FormControl>
           <Box
